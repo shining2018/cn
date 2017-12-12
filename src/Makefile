@@ -18,6 +18,7 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(QTENV_LIBS) $(CMDENV_LI
 INCLUDE_PATH = \
     -I. \
     -Iinet \
+    -Iinet/application \
     -Iinet/common \
     -Iinet/common/figures \
     -Iinet/common/geometry \
@@ -48,6 +49,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
 OBJS = \
+    $O/inet/application/BurstTraffic.o \
     $O/inet/common/Compat.o \
     $O/inet/common/InitStages.o \
     $O/inet/common/ModuleAccess.o \
@@ -157,6 +159,7 @@ clean:
 	$(Q)-rm -f cn cn.exe libcn.so libcn.a libcn.dll libcn.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h ./*_sm.cc ./*_sm.h
 	$(Q)-rm -f inet/*_m.cc inet/*_m.h inet/*_sm.cc inet/*_sm.h
+	$(Q)-rm -f inet/application/*_m.cc inet/application/*_m.h inet/application/*_sm.cc inet/application/*_sm.h
 	$(Q)-rm -f inet/common/*_m.cc inet/common/*_m.h inet/common/*_sm.cc inet/common/*_sm.h
 	$(Q)-rm -f inet/common/figures/*_m.cc inet/common/figures/*_m.h inet/common/figures/*_sm.cc inet/common/figures/*_sm.h
 	$(Q)-rm -f inet/common/geometry/*_m.cc inet/common/geometry/*_m.h inet/common/geometry/*_sm.cc inet/common/geometry/*_sm.h
@@ -179,9 +182,16 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc inet/*.cc inet/common/*.cc inet/common/figures/*.cc inet/common/geometry/*.cc inet/common/geometry/common/*.cc inet/common/queue/*.cc inet/mobility/*.cc inet/mobility/base/*.cc inet/mobility/contract/*.cc inet/mobility/single/*.cc inet/mobility/static/*.cc inet/node/*.cc inet/visualizer/*.cc inet/visualizer/base/*.cc inet/visualizer/contract/*.cc inet/visualizer/mobility/*.cc inet/visualizer/networknode/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc inet/*.cc inet/application/*.cc inet/common/*.cc inet/common/figures/*.cc inet/common/geometry/*.cc inet/common/geometry/common/*.cc inet/common/queue/*.cc inet/mobility/*.cc inet/mobility/base/*.cc inet/mobility/contract/*.cc inet/mobility/single/*.cc inet/mobility/static/*.cc inet/node/*.cc inet/visualizer/*.cc inet/visualizer/base/*.cc inet/visualizer/contract/*.cc inet/visualizer/mobility/*.cc inet/visualizer/networknode/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+$O/inet/application/BurstTraffic.o: inet/application/BurstTraffic.cc \
+	inet/application/BurstTraffic.h \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/features.h
 $O/inet/common/Compat.o: inet/common/Compat.cc \
 	inet/common/Compat.h
 $O/inet/common/InitStages.o: inet/common/InitStages.cc \

@@ -13,40 +13,16 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.inet.node;
-import cn.inet.mobility.contract.IMobility;
-import cn.inet.application.IApp;
-import cn.inet.linklayer.contract.IHostMac;
+package cn.simulations.DaraTest;
+import cn.inet.node.Ap;
+import cn.inet.node.Host;
 
-module Host
+network DaraTest
 {
 	parameters:
-	    @display("i=device/satellite");
+	    int hostNum;
 	    
-	    //mobility module
-	    string mobilityType=default("StationaryMobility");
-	    //application layer
-	    string appType=default("BurstTraffic");
-	    //mac layer
-	    string macType=default("TdmaHostMac");
-	
-	gates:
-	    input in @directIn;
-	        
 	submodules:
-	    mobility:<mobilityType> like IMobility
-	    {
-	    	
-	    }
-	    app:<appType> like IApp
-	    {
-	    
-	    }
-	    mac:<macType> like IHostMac
-	    {
-	    
-	    }
-	connections:
-	    in --> mac.inFromHost;
-	    app.out --> mac.inFromApp;
+	    host[hostNum]:Host;
+	    ap:Ap;
 }

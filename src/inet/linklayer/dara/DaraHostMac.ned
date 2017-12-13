@@ -13,33 +13,16 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.inet.node;
-import cn.inet.mobility.contract.IMobility;
-import cn.inet.linklayer.contract.IApMac;
-//import fanet.inet.common.queue.Sink;
+package cn.inet.linklayer.dara;
+import cn.inet.linklayer.common.HostMacBase;
 
-
-module Ap
+simple DaraHostMac extends HostMacBase
 {
-    parameters:
-        @display("i=device/receiverdish_l");
-
-        //mobility module
-        string mobilityType = default("StationaryMobility");
-        //mac
-        string macType = default("");
-
-    gates:
-        input in @directIn;
-
-    submodules:
-        mobility: <mobilityType> like IMobility {
-
-            @display("p=241,33");
-        }
-        mac: <macType> like IApMac;
-
-    connections:
-        in --> mac.inFromAp;
-
+	parameters:
+	    @display("i=block/ifcard");
+		//number of slots for ack
+		int ackSlotNum;
+        
+        @class(DaraHostMac);
+	    
 }

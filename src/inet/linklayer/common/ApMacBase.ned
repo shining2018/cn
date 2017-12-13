@@ -13,40 +13,23 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.inet.node;
-import cn.inet.mobility.contract.IMobility;
-import cn.inet.application.IApp;
-import cn.inet.linklayer.contract.IHostMac;
+package cn.inet.linklayer.common;
+import cn.inet.linklayer.contract.IApMac;
 
-module Host
+simple ApMacBase like IApMac
 {
 	parameters:
-	    @display("i=device/satellite");
+	    @display("i=block/ifcard");
+	    double slotLength @unit("s");
+	    int slotNum;
+	    double communicationRange @unit(m);
 	    
-	    //mobility module
-	    string mobilityType=default("StationaryMobility");
-	    //application layer
-	    string appType=default("BurstTraffic");
-	    //mac layer
-	    string macType=default("TdmaHostMac");
+	    @signal[pkCount](type=long);
+	    @statistic[pkCount](title="pkCount";source=pkCount;record=count;interpolationmode=node);
+	    
+	    @class(ApMacBase);
 	
 	gates:
-	    input in @directIn;
-	        
-	submodules:
-	    mobility:<mobilityType> like IMobility
-	    {
-	    	
-	    }
-	    app:<appType> like IApp
-	    {
-	    
-	    }
-	    mac:<macType> like IHostMac
-	    {
-	    
-	    }
-	connections:
-	    in --> mac.inFromHost;
-	    app.out --> mac.inFromApp;
+	    input inFromAp;
+	    //output outToSink;
 }

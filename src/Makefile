@@ -72,6 +72,7 @@ OBJS = \
     $O/inet/linklayer/common/HostMacBase.o \
     $O/inet/linklayer/dara/DaraApMac.o \
     $O/inet/linklayer/dara/DaraHostMac.o \
+    $O/inet/linklayer/dara/IrsaHostMac.o \
     $O/inet/mobility/base/MobilityBase.o \
     $O/inet/mobility/base/MovingMobilityBase.o \
     $O/inet/mobility/contract/IMobility.o \
@@ -331,6 +332,20 @@ $O/inet/linklayer/dara/DaraHostMac.o: inet/linklayer/dara/DaraHostMac.cc \
 	inet/mobility/contract/IMobility.h
 $O/inet/linklayer/dara/DaraHostPk_m.o: inet/linklayer/dara/DaraHostPk_m.cc \
 	inet/linklayer/dara/DaraHostPk_m.h
+$O/inet/linklayer/dara/IrsaHostMac.o: inet/linklayer/dara/IrsaHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/dara/DaraApPk_m.h \
+	inet/linklayer/dara/DaraHostPk_m.h \
+	inet/linklayer/dara/IrsaHostMac.h \
+	inet/mobility/contract/IMobility.h
 $O/inet/mobility/base/MobilityBase.o: inet/mobility/base/MobilityBase.cc \
 	inet/common/Compat.h \
 	inet/common/INETDefs.h \

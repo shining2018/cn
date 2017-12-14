@@ -1,27 +1,27 @@
 /*
- * DaraHostMac.cc
+ * IrsaHostMac.cc
  *
- *  Created on: 2017年12月12日
+ *  Created on: 2017年12月14日
  *      Author: NETLAB
  */
-#include "inet/linklayer/dara/DaraHostMac.h"
+#include "inet/linklayer/dara/IrsaHostMac.h"
 #include "inet/linklayer/dara/DaraApPk_m.h"
 
 namespace inet
 {
-Define_Module(DaraHostMac);
+Define_Module(IrsaHostMac);
 
-DaraHostMac::DaraHostMac()
+IrsaHostMac::IrsaHostMac()
 {
     m_SelfMsgTimer=nullptr;
 }
 
-DaraHostMac::~DaraHostMac()
+IrsaHostMac::~IrsaHostMac()
 {
     cancelAndDelete(m_SelfMsgTimer);
 }
 
-void DaraHostMac::initialize()
+void IrsaHostMac::initialize()
 {
     HostMacBase::initialize();
 
@@ -31,7 +31,7 @@ void DaraHostMac::initialize()
     scheduleAt(0,m_SelfMsgTimer);
 }
 
-void DaraHostMac::handleMessage(cMessage *msg)
+void IrsaHostMac::handleMessage(cMessage *msg)
 {
     if(msg->isSelfMessage())
     {
@@ -43,25 +43,18 @@ void DaraHostMac::handleMessage(cMessage *msg)
     }
 }
 
-void DaraHostMac::handleSelfMsg(cMessage *msg)
+void IrsaHostMac::handleSelfMsg(cMessage *msg)
 {
     if(msg==m_SelfMsgTimer)
     {
-        if(simTime()!=0)
+        scheduleAt(simTime()+m_SlotLength*m_SlotsNum,m_SelfMsgTimer);
+        if(!isOutOfCommunicationRange())
         {
-            scheduleAt(simTime()+m_SlotLength*m_SlotsNum,m_SelfMsgTimer);
-            if(!isOutOfCommunicationRange())
-            {
-                sendData();
-            }
-            else
-            {
-                m_AppQueue.clear();
-            }
+            sendData();
         }
         else
         {
-            scheduleAt(simTime()+m_SlotLength*(m_SlotsNum-m_AckSlotNum),m_SelfMsgTimer);
+            m_AppQueue.clear();
         }
     }
     else
@@ -78,7 +71,7 @@ void DaraHostMac::handleSelfMsg(cMessage *msg)
     }
 }
 
-void DaraHostMac::handleNonSelfMsg(cMessage *msg)
+void IrsaHostMac::handleNonSelfMsg(cMessage *msg)
 {
     if(msg->getKind()==PkKinds_AppPk)
     {
@@ -113,7 +106,7 @@ void DaraHostMac::handleNonSelfMsg(cMessage *msg)
     }
 }
 
-int DaraHostMac::getRepetitionNum()
+int IrsaHostMac::getRepetitionNum()
 {
     //0.5631x3+0.0436x3+0.3933x5
     int repetitionNum=0;
@@ -136,16 +129,24 @@ int DaraHostMac::getRepetitionNum()
     return repetitionNum;
 }
 
-void DaraHostMac::sendData()
+void IrsaHostMac::sendData()
 {
     if(m_AppQueue.getLength()!=0)
     {
+        int propagationSlot=getPropagationSlots();
         //初始化一个数组，记录哪些时隙可以发送请求副本，
         //初始化时，都可以发送
         bool AvaiableSlots[m_SlotsNum-m_AckSlotNum];
         for(int i=0;i<(m_SlotsNum-m_AckSlotNum);i++)
         {
-            AvaiableSlots[i]=true;
+            if(i<propagationSlot)
+            {
+                AvaiableSlots[i]=false;
+            }
+            else
+            {
+                AvaiableSlots[i]=true;
+            }
         }
 
         //得到 需要发多少个副本
@@ -157,12 +158,7 @@ void DaraHostMac::sendData()
         vector<int> slotIndexVector;
         slotIndexVector.clear();
 
-        //DARA中，根据传播延迟，可以确定某一个时隙，其他时隙随机
-        int certainSlot=getPropagationSlots();
-        AvaiableSlots[certainSlot-1]=false;
-        slotIndexVector.push_back(certainSlot-1);
-
-        for(int i=0;i<repetitionNum-1;i++)
+        for(int i=0;i<repetitionNum;i++)
         {
             rdSlotIndex=intrand(m_SlotsNum-m_AckSlotNum);
             while(!AvaiableSlots[rdSlotIndex])
@@ -194,10 +190,10 @@ void DaraHostMac::sendData()
             DaraHostPk *dupPk=daraPk->dup();
             dupPk->setSlotIndex(slotIndexVector[i]);
             dupPk->setKind(PkKinds_Self_Dara_Host_Data);
-            scheduleAt(simTime()+(slotIndexVector[i]+m_AckSlotNum-getPropagationSlots())*m_SlotLength,dupPk);
-            EV_DEBUG<<"A repetion will be sent in "<<(simTime()+(slotIndexVector[i]+m_AckSlotNum-getPropagationSlots())*m_SlotLength)<<
-                    ", and the propagation delay is "<<getPropagationSlots()*m_SlotLength<<", so the pk will be arrived at "<<
-                    (simTime()+(slotIndexVector[i]+m_AckSlotNum)*m_SlotLength)<<endl;
+            scheduleAt(simTime()+(slotIndexVector[i]-propagationSlot)*m_SlotLength,dupPk);
+            EV_DEBUG<<"A repetion will be sent in "<<(simTime()+(slotIndexVector[i]-getPropagationSlots())*m_SlotLength)<<
+                    ", and the propagation delay is "<<propagationSlot*m_SlotLength<<", so the pk will be arrived at "<<
+                    (simTime()+(slotIndexVector[i])*m_SlotLength)<<endl;
         }
 
         delete daraPk;

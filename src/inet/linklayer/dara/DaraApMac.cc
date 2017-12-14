@@ -60,6 +60,8 @@ void DaraApMac::handleNonSelfMsg(cMessage *msg)
 
         HostPksInfoVector.push_back(pkInfor);
 
+        delete pk;
+
     }
     else
     {

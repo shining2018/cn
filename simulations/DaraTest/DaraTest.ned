@@ -13,26 +13,16 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.simulations.MobilityTest;
-import cn.inet.mobility.contract.IMobility;
+package cn.simulations.DaraTest;
+import cn.inet.node.Ap;
+import cn.inet.node.Host;
 
-
-module MobileHost
-{
-	parameters:
-	    @display("i=device/satellite");
-	    string mobilityType=default("ThreeWayRandomMobility");
-	    @networkNode();
-	    
-	submodules:
-	    mobility:<mobilityType>  like IMobility;
-}
-
-network MobilityTest 
+network DaraTest
 {
 	parameters:
 	    int hostNum;
-	
+	    
 	submodules:
-	    host[hostNum]:MobileHost;
+	    host[hostNum]:Host;
+	    ap:Ap;
 }

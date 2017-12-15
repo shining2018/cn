@@ -13,26 +13,14 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.simulations.MobilityTest;
-import cn.inet.mobility.contract.IMobility;
+package cn.inet.linklayer.dara;
+import cn.inet.linklayer.common.HostMacBase;
 
-
-module MobileHost
+simple IrsaHostMac extends HostMacBase
 {
 	parameters:
-	    @display("i=device/satellite");
-	    string mobilityType=default("ThreeWayRandomMobility");
-	    @networkNode();
-	    
-	submodules:
-	    mobility:<mobilityType>  like IMobility;
-}
-
-network MobilityTest 
-{
-	parameters:
-	    int hostNum;
-	
-	submodules:
-	    host[hostNum]:MobileHost;
+	    @display("i=block/ifcard");
+	    int ackSlotNum;
+	    int repetitionRate;
+	    @class(IrsaHostMac);
 }

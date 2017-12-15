@@ -37,7 +37,7 @@ void ThreeWayRandomMobility::initialize(int stage)
 {
     MovingMobilityBase::initialize(stage);
 
-    EV_TRACE << "initializing CircleMobility stage " << stage << endl;
+    EV_TRACE << "initializing ThreeWayRandomMobility stage " << stage << endl;
     if (stage == INITSTAGE_LOCAL) {
         r = par("r");
         radius=par("radius");
@@ -62,12 +62,21 @@ void ThreeWayRandomMobility::setInitialPosition()
     lastPosition.x=uniform(constraintAreaMin.x,constraintAreaMax.x);
     lastPosition.y=uniform(constraintAreaMin.y,constraintAreaMax.y);
     lastPosition.z=uniform(constraintAreaMin.z,constraintAreaMax.z);
+
+    while(isBorderHugging())
+    {
+        lastPosition.x=uniform(constraintAreaMin.x,constraintAreaMax.x);
+        lastPosition.y=uniform(constraintAreaMin.y,constraintAreaMax.y);
+        lastPosition.z=uniform(constraintAreaMin.z,constraintAreaMax.z);
+    }
 }
 
 void ThreeWayRandomMobility::move()
 {
     if(isBorderHugging())
     {
+        EV_DEBUG<<"Border hugging..."<<endl;
+
         if(isOutOfBorder==false)
         {
             if(randomValue>0.5)
@@ -80,6 +89,7 @@ void ThreeWayRandomMobility::move()
                 cx=lastPosition.x+radius*cos(angle);
                 cy=lastPosition.y-radius*sin(angle);
             }
+            EV_DEBUG<<"cx="<<cx<<", cy="<<cy<<endl;
         }
 
         isOutOfBorder=true;
@@ -105,13 +115,21 @@ void ThreeWayRandomMobility::move()
 
         }
 
+        EV_DEBUG<<"isOutOfBorder="<<isOutOfBorder<<endl;
+        EV_DEBUG<<"randomValue="<<randomValue<<endl;
+        EV_DEBUG<<"state="<<state<<endl;
+        EV_DEBUG<<"cx="<<cx<<", cy="<<cy<<endl;
+        EV_DEBUG<<"lastPosition:"<<lastPosition<<endl;
+
     }
     else
     {
+        EV_DEBUG<<"out of border..."<<endl;
         isOutOfBorder=false;
 
         if(simTime()>=nextTransition)
         {
+            EV_DEBUG<<"exe if(simTime()>=nextTransition)"<<endl;
             nextTransition=simTime()+duration;
             EV_DEBUG<<"Current time "<<simTime()<<", and next transition is "<<nextTransition<<endl;
 
@@ -171,6 +189,8 @@ void ThreeWayRandomMobility::move()
             lastSpeed.y = cos(angle) * speed;
             lastSpeed.z = 0;
         }
+
+        EV_DEBUG<<"state="<<state<<endl;
     }
 
     EV_DEBUG<<"after move, current position: "<<lastPosition<<endl;

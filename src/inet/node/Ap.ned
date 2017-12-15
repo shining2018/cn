@@ -15,7 +15,7 @@
 
 package cn.inet.node;
 import cn.inet.mobility.contract.IMobility;
-//import fanet.inet.linklayer.contract.IApMac;
+import cn.inet.linklayer.contract.IApMac;
 //import fanet.inet.common.queue.Sink;
 
 
@@ -27,7 +27,9 @@ module Ap
         //mobility module
         string mobilityType = default("StationaryMobility");
         //mac
-        //string macType = default("");
+        string macType = default("");
+        
+        @networkNode();
 
     gates:
         input in @directIn;
@@ -37,9 +39,9 @@ module Ap
 
             @display("p=241,33");
         }
-        //mac: <macType> like IApMac;
+        mac: <macType> like IApMac;
 
-//    connections:
-//        in --> mac.inFromAp;
+    connections:
+        in --> mac.inFromAp;
 
 }

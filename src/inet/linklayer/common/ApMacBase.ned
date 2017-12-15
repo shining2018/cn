@@ -13,26 +13,23 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.simulations.MobilityTest;
-import cn.inet.mobility.contract.IMobility;
+package cn.inet.linklayer.common;
+import cn.inet.linklayer.contract.IApMac;
 
-
-module MobileHost
+simple ApMacBase like IApMac
 {
 	parameters:
-	    @display("i=device/satellite");
-	    string mobilityType=default("ThreeWayRandomMobility");
-	    @networkNode();
+	    @display("i=block/ifcard");
+	    double slotLength @unit("s");
+	    int slotNum;
+	    double communicationRange @unit(m);
 	    
-	submodules:
-	    mobility:<mobilityType>  like IMobility;
-}
-
-network MobilityTest 
-{
-	parameters:
-	    int hostNum;
+	    @signal[pkCount](type=long);
+	    @statistic[pkCount](title="pkCount";source=pkCount;record=count;interpolationmode=node);
+	    
+	    @class(ApMacBase);
 	
-	submodules:
-	    host[hostNum]:MobileHost;
+	gates:
+	    input inFromAp;
+	    //output outToSink;
 }

@@ -13,26 +13,24 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.simulations.MobilityTest;
-import cn.inet.mobility.contract.IMobility;
+cplusplus{{
+	#include <vector>
+}}
+namespace inet;
 
+cplusplus{{
+	typedef std::vector<int> RepetitionPoint;
+}}
 
-module MobileHost
+class noncobject RepetitionPoint;
+
+packet DaraHostPk
 {
-	parameters:
-	    @display("i=device/satellite");
-	    string mobilityType=default("ThreeWayRandomMobility");
-	    @networkNode();
-	    
-	submodules:
-	    mobility:<mobilityType>  like IMobility;
-}
-
-network MobilityTest 
-{
-	parameters:
-	    int hostNum;
-	
-	submodules:
-	    host[hostNum]:MobileHost;
+    long PkId;
+	int HostId;
+	string HostPath;
+	int SlotIndex;
+	int NumOfRepetitions;
+	RepetitionPoint point;
+	bool IsRecovery;
 }

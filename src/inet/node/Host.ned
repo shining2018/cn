@@ -15,8 +15,8 @@
 
 package cn.inet.node;
 import cn.inet.mobility.contract.IMobility;
-//import fanet.inet.application.IApp;
-//import fanet.inet.linklayer.contract.IHostMac;
+import cn.inet.application.IApp;
+import cn.inet.linklayer.contract.IHostMac;
 
 module Host
 {
@@ -26,9 +26,11 @@ module Host
 	    //mobility module
 	    string mobilityType=default("StationaryMobility");
 	    //application layer
-	    //string appType=default("BurstTraffic");
+	    string appType=default("BurstTraffic");
 	    //mac layer
-	    //string macType=default("TdmaHostMac");
+	    string macType=default("TdmaHostMac");
+	    
+	    @networkNode();
 	
 	gates:
 	    input in @directIn;
@@ -38,15 +40,15 @@ module Host
 	    {
 	    	
 	    }
-//	    app:<appType> like IApp
-//	    {
-//	    
-//	    }
-//	    mac:<macType> like IHostMac
-//	    {
-//	    
-//	    }
-//	connections:
-//	    in --> mac.inFromHost;
-//	    app.out --> mac.inFromApp;
+	    app:<appType> like IApp
+	    {
+	    
+	    }
+	    mac:<macType> like IHostMac
+	    {
+	    
+	    }
+	connections:
+	    in --> mac.inFromHost;
+	    app.out --> mac.inFromApp;
 }

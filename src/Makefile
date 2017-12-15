@@ -24,6 +24,13 @@ INCLUDE_PATH = \
     -Iinet/common/geometry \
     -Iinet/common/geometry/common \
     -Iinet/common/queue \
+    -Iinet/linklayer \
+    -Iinet/linklayer/common \
+    -Iinet/linklayer/contract \
+    -Iinet/linklayer/dara \
+    -Iinet/linklayer/irsa \
+    -Iinet/linklayer/ld \
+    -Iinet/linklayer/tdma \
     -Iinet/mobility \
     -Iinet/mobility/base \
     -Iinet/mobility/contract \
@@ -61,6 +68,11 @@ OBJS = \
     $O/inet/common/geometry/common/EulerAngles.o \
     $O/inet/common/geometry/common/Rotation.o \
     $O/inet/common/queue/Sink.o \
+    $O/inet/linklayer/common/ApMacBase.o \
+    $O/inet/linklayer/common/HostMacBase.o \
+    $O/inet/linklayer/dara/DaraApMac.o \
+    $O/inet/linklayer/dara/DaraHostMac.o \
+    $O/inet/linklayer/dara/IrsaHostMac.o \
     $O/inet/mobility/base/MobilityBase.o \
     $O/inet/mobility/base/MovingMobilityBase.o \
     $O/inet/mobility/contract/IMobility.o \
@@ -71,10 +83,14 @@ OBJS = \
     $O/inet/visualizer/base/VisualizerBase.o \
     $O/inet/visualizer/mobility/MobilityCanvasVisualizer.o \
     $O/inet/visualizer/networknode/NetworkNodeCanvasVisualization.o \
-    $O/inet/visualizer/networknode/NetworkNodeCanvasVisualizer.o
+    $O/inet/visualizer/networknode/NetworkNodeCanvasVisualizer.o \
+    $O/inet/linklayer/dara/DaraApPk_m.o \
+    $O/inet/linklayer/dara/DaraHostPk_m.o
 
 # Message files
-MSGFILES =
+MSGFILES = \
+    inet/linklayer/dara/DaraApPk.msg \
+    inet/linklayer/dara/DaraHostPk.msg
 
 # SM files
 SMFILES =
@@ -165,6 +181,13 @@ clean:
 	$(Q)-rm -f inet/common/geometry/*_m.cc inet/common/geometry/*_m.h inet/common/geometry/*_sm.cc inet/common/geometry/*_sm.h
 	$(Q)-rm -f inet/common/geometry/common/*_m.cc inet/common/geometry/common/*_m.h inet/common/geometry/common/*_sm.cc inet/common/geometry/common/*_sm.h
 	$(Q)-rm -f inet/common/queue/*_m.cc inet/common/queue/*_m.h inet/common/queue/*_sm.cc inet/common/queue/*_sm.h
+	$(Q)-rm -f inet/linklayer/*_m.cc inet/linklayer/*_m.h inet/linklayer/*_sm.cc inet/linklayer/*_sm.h
+	$(Q)-rm -f inet/linklayer/common/*_m.cc inet/linklayer/common/*_m.h inet/linklayer/common/*_sm.cc inet/linklayer/common/*_sm.h
+	$(Q)-rm -f inet/linklayer/contract/*_m.cc inet/linklayer/contract/*_m.h inet/linklayer/contract/*_sm.cc inet/linklayer/contract/*_sm.h
+	$(Q)-rm -f inet/linklayer/dara/*_m.cc inet/linklayer/dara/*_m.h inet/linklayer/dara/*_sm.cc inet/linklayer/dara/*_sm.h
+	$(Q)-rm -f inet/linklayer/irsa/*_m.cc inet/linklayer/irsa/*_m.h inet/linklayer/irsa/*_sm.cc inet/linklayer/irsa/*_sm.h
+	$(Q)-rm -f inet/linklayer/ld/*_m.cc inet/linklayer/ld/*_m.h inet/linklayer/ld/*_sm.cc inet/linklayer/ld/*_sm.h
+	$(Q)-rm -f inet/linklayer/tdma/*_m.cc inet/linklayer/tdma/*_m.h inet/linklayer/tdma/*_sm.cc inet/linklayer/tdma/*_sm.h
 	$(Q)-rm -f inet/mobility/*_m.cc inet/mobility/*_m.h inet/mobility/*_sm.cc inet/mobility/*_sm.h
 	$(Q)-rm -f inet/mobility/base/*_m.cc inet/mobility/base/*_m.h inet/mobility/base/*_sm.cc inet/mobility/base/*_sm.h
 	$(Q)-rm -f inet/mobility/contract/*_m.cc inet/mobility/contract/*_m.h inet/mobility/contract/*_sm.cc inet/mobility/contract/*_sm.h
@@ -182,7 +205,7 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc inet/*.cc inet/application/*.cc inet/common/*.cc inet/common/figures/*.cc inet/common/geometry/*.cc inet/common/geometry/common/*.cc inet/common/queue/*.cc inet/mobility/*.cc inet/mobility/base/*.cc inet/mobility/contract/*.cc inet/mobility/single/*.cc inet/mobility/static/*.cc inet/node/*.cc inet/visualizer/*.cc inet/visualizer/base/*.cc inet/visualizer/contract/*.cc inet/visualizer/mobility/*.cc inet/visualizer/networknode/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc inet/*.cc inet/application/*.cc inet/common/*.cc inet/common/figures/*.cc inet/common/geometry/*.cc inet/common/geometry/common/*.cc inet/common/queue/*.cc inet/linklayer/*.cc inet/linklayer/common/*.cc inet/linklayer/contract/*.cc inet/linklayer/dara/*.cc inet/linklayer/irsa/*.cc inet/linklayer/ld/*.cc inet/linklayer/tdma/*.cc inet/mobility/*.cc inet/mobility/base/*.cc inet/mobility/contract/*.cc inet/mobility/single/*.cc inet/mobility/static/*.cc inet/node/*.cc inet/visualizer/*.cc inet/visualizer/base/*.cc inet/visualizer/contract/*.cc inet/visualizer/mobility/*.cc inet/visualizer/networknode/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/inet/application/BurstTraffic.o: inet/application/BurstTraffic.cc \
@@ -265,6 +288,64 @@ $O/inet/common/queue/Sink.o: inet/common/queue/Sink.cc \
 	inet/common/InitStages.h \
 	inet/common/queue/Sink.h \
 	inet/features.h
+$O/inet/linklayer/common/ApMacBase.o: inet/linklayer/common/ApMacBase.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/InitStages.h \
+	inet/features.h \
+	inet/linklayer/common/ApMacBase.h
+$O/inet/linklayer/common/HostMacBase.o: inet/linklayer/common/HostMacBase.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/dara/DaraApMac.o: inet/linklayer/dara/DaraApMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/features.h \
+	inet/linklayer/common/ApMacBase.h \
+	inet/linklayer/dara/DaraApMac.h \
+	inet/linklayer/dara/DaraApPk_m.h \
+	inet/linklayer/dara/DaraHostPk_m.h
+$O/inet/linklayer/dara/DaraApPk_m.o: inet/linklayer/dara/DaraApPk_m.cc \
+	inet/linklayer/dara/DaraApPk_m.h
+$O/inet/linklayer/dara/DaraHostMac.o: inet/linklayer/dara/DaraHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/dara/DaraApPk_m.h \
+	inet/linklayer/dara/DaraHostMac.h \
+	inet/linklayer/dara/DaraHostPk_m.h \
+	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/dara/DaraHostPk_m.o: inet/linklayer/dara/DaraHostPk_m.cc \
+	inet/linklayer/dara/DaraHostPk_m.h
+$O/inet/linklayer/dara/IrsaHostMac.o: inet/linklayer/dara/IrsaHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/dara/DaraApPk_m.h \
+	inet/linklayer/dara/DaraHostPk_m.h \
+	inet/linklayer/dara/IrsaHostMac.h \
+	inet/mobility/contract/IMobility.h
 $O/inet/mobility/base/MobilityBase.o: inet/mobility/base/MobilityBase.cc \
 	inet/common/Compat.h \
 	inet/common/INETDefs.h \

@@ -13,26 +13,18 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.simulations.MobilityTest;
-import cn.inet.mobility.contract.IMobility;
+cplusplus{{
+	#include <vector>
+}}
+namespace inet;
 
+cplusplus{{
+	typedef std::vector<int> ACKVector;
+}}
 
-module MobileHost
+class noncobject ACKVector;
+
+packet DaraApPk
 {
-	parameters:
-	    @display("i=device/satellite");
-	    string mobilityType=default("ThreeWayRandomMobility");
-	    @networkNode();
-	    
-	submodules:
-	    mobility:<mobilityType>  like IMobility;
-}
-
-network MobilityTest 
-{
-	parameters:
-	    int hostNum;
-	
-	submodules:
-	    host[hostNum]:MobileHost;
+	ACKVector ack;
 }

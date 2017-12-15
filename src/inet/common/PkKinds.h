@@ -24,6 +24,8 @@ PkKinds_Self_IRSA_Host_Data=104,
 
 PkKinds_Host_Statistic=105,
 
+PkKinds_Self_Dara_Host_Data=106,
+
 };
 }
 

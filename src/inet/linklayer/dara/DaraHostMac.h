@@ -18,6 +18,7 @@ namespace inet
 class DaraHostMac : public HostMacBase
 {
 private:
+    int m_RepetitionRate;
     int m_AckSlotNum;
     cMessage *m_SelfMsgTimer;
 

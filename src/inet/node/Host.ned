@@ -29,6 +29,8 @@ module Host
 	    string appType=default("BurstTraffic");
 	    //mac layer
 	    string macType=default("TdmaHostMac");
+	    
+	    @networkNode();
 	
 	gates:
 	    input in @directIn;

@@ -22,7 +22,7 @@ simple DaraHostMac extends HostMacBase
 	    @display("i=block/ifcard");
 		//number of slots for ack
 		int ackSlotNum;
-        
+        int repetitionRate;
         @class(DaraHostMac);
 	    
 }

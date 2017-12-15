@@ -16,6 +16,7 @@
 package cn.simulations.MobilityTest;
 import cn.inet.mobility.contract.IMobility;
 
+
 module MobileHost
 {
 	parameters:

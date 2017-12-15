@@ -1,14 +1,14 @@
 version 2
-run IrsaHost-0-20171214-16:02:03-9068
+run IrsaHost-0-20171214-22:29:31-11692
 attr configname IrsaHost
-attr datetime 20171214-16:02:03
+attr datetime 20171214-22:29:31
 attr experiment IrsaHost
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvars2 $repetition=0
 attr measurement ""
 attr network DaraTest
-attr processid 9068
+attr processid 11692
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -30,13 +30,14 @@ param **.constraintAreaMaxZ 0m
 param **.constraintAreaMinX 0
 param **.constraintAreaMinY 0
 param **.constraintAreaMinZ 0
-param **.hostNum 70
+param **.hostNum 10
 param **.host[*].app.burstInterval uniform(20ms,40ms)
 param **.host[*].app.pkLength 4096b
 param **.host[*].app.pksPerBurst 1
 param **.host[*].appType "\"BurstTraffic\""
 param **.host[*].mac.ackSlotNum 20
 param **.host[*].mac.communicationRange 300000m
+param **.host[*].mac.repetitionRate 2
 param **.host[*].mac.slotLength 0.1ms
 param **.host[*].mac.slotNum 32
 param **.host[*].mac.txRate 100000000bps
@@ -49,7 +50,7 @@ param **.host[*].mobility.speed 80mps
 param **.host[*].mobility.startAngle "uniform(0deg, 360deg)"
 param **.host[*].mobilityType "\"ThreeWayRandomMobility\""
 
-scalar DaraTest.host[0].app 	pkCount:count 	10012
+scalar DaraTest.host[0].app 	pkCount:count 	16359
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -64,7 +65,7 @@ scalar DaraTest.host[0].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[1].app 	pkCount:count 	10018
+scalar DaraTest.host[1].app 	pkCount:count 	16353
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -79,7 +80,7 @@ scalar DaraTest.host[1].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[2].app 	pkCount:count 	9996
+scalar DaraTest.host[2].app 	pkCount:count 	16331
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -94,7 +95,7 @@ scalar DaraTest.host[2].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[3].app 	pkCount:count 	10018
+scalar DaraTest.host[3].app 	pkCount:count 	16313
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -109,7 +110,7 @@ scalar DaraTest.host[3].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[4].app 	pkCount:count 	9985
+scalar DaraTest.host[4].app 	pkCount:count 	16362
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -124,7 +125,7 @@ scalar DaraTest.host[4].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[5].app 	pkCount:count 	10053
+scalar DaraTest.host[5].app 	pkCount:count 	16351
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -139,7 +140,7 @@ scalar DaraTest.host[5].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[6].app 	pkCount:count 	10013
+scalar DaraTest.host[6].app 	pkCount:count 	16333
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -154,7 +155,7 @@ scalar DaraTest.host[6].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[7].app 	pkCount:count 	10044
+scalar DaraTest.host[7].app 	pkCount:count 	16343
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -169,7 +170,7 @@ scalar DaraTest.host[7].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[8].app 	pkCount:count 	10013
+scalar DaraTest.host[8].app 	pkCount:count 	16367
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -184,7 +185,7 @@ scalar DaraTest.host[8].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[9].app 	pkCount:count 	10011
+scalar DaraTest.host[9].app 	pkCount:count 	16362
 attr interpolationmode  node
 attr source  pkCount
 attr title  "NumOfPks, count"
@@ -199,907 +200,7 @@ scalar DaraTest.host[9].mac 	sentPkCount:count 	0
 attr interpolationmode  node
 attr source  sentPkCount
 attr title  "Count of sent packets, count"
-scalar DaraTest.host[10].app 	pkCount:count 	10033
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[10].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[10].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[10].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[11].app 	pkCount:count 	9986
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[11].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[11].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[11].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[12].app 	pkCount:count 	10010
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[12].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[12].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[12].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[13].app 	pkCount:count 	10046
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[13].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[13].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[13].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[14].app 	pkCount:count 	10024
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[14].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[14].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[14].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[15].app 	pkCount:count 	10030
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[15].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[15].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[15].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[16].app 	pkCount:count 	10002
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[16].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[16].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[16].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[17].app 	pkCount:count 	10009
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[17].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[17].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[17].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[18].app 	pkCount:count 	10027
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[18].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[18].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[18].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[19].app 	pkCount:count 	10016
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[19].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[19].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[19].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[20].app 	pkCount:count 	9993
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[20].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[20].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[20].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[21].app 	pkCount:count 	10021
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[21].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[21].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[21].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[22].app 	pkCount:count 	10014
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[22].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[22].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[22].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[23].app 	pkCount:count 	10005
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[23].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[23].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[23].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[24].app 	pkCount:count 	10007
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[24].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[24].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[24].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[25].app 	pkCount:count 	10021
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[25].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[25].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[25].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[26].app 	pkCount:count 	10005
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[26].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[26].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[26].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[27].app 	pkCount:count 	9982
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[27].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[27].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[27].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[28].app 	pkCount:count 	10022
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[28].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[28].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[28].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[29].app 	pkCount:count 	9996
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[29].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[29].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[29].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[30].app 	pkCount:count 	10014
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[30].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[30].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[30].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[31].app 	pkCount:count 	9989
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[31].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[31].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[31].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[32].app 	pkCount:count 	9984
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[32].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[32].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[32].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[33].app 	pkCount:count 	10034
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[33].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[33].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[33].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[34].app 	pkCount:count 	10032
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[34].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[34].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[34].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[35].app 	pkCount:count 	10010
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[35].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[35].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[35].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[36].app 	pkCount:count 	10034
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[36].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[36].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[36].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[37].app 	pkCount:count 	10022
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[37].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[37].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[37].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[38].app 	pkCount:count 	10020
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[38].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[38].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[38].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[39].app 	pkCount:count 	10016
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[39].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[39].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[39].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[40].app 	pkCount:count 	9992
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[40].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[40].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[40].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[41].app 	pkCount:count 	10035
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[41].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[41].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[41].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[42].app 	pkCount:count 	10004
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[42].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[42].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[42].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[43].app 	pkCount:count 	10015
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[43].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[43].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[43].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[44].app 	pkCount:count 	10034
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[44].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[44].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[44].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[45].app 	pkCount:count 	10005
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[45].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[45].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[45].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[46].app 	pkCount:count 	10027
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[46].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[46].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[46].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[47].app 	pkCount:count 	10034
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[47].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[47].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[47].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[48].app 	pkCount:count 	10026
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[48].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[48].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[48].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[49].app 	pkCount:count 	10027
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[49].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[49].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[49].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[50].app 	pkCount:count 	10043
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[50].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[50].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[50].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[51].app 	pkCount:count 	10031
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[51].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[51].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[51].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[52].app 	pkCount:count 	10018
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[52].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[52].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[52].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[53].app 	pkCount:count 	10024
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[53].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[53].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[53].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[54].app 	pkCount:count 	10018
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[54].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[54].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[54].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[55].app 	pkCount:count 	10002
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[55].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[55].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[55].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[56].app 	pkCount:count 	10028
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[56].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[56].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[56].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[57].app 	pkCount:count 	10015
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[57].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[57].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[57].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[58].app 	pkCount:count 	10001
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[58].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[58].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[58].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[59].app 	pkCount:count 	10011
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[59].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[59].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[59].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[60].app 	pkCount:count 	10007
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[60].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[60].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[60].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[61].app 	pkCount:count 	10028
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[61].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[61].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[61].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[62].app 	pkCount:count 	10030
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[62].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[62].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[62].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[63].app 	pkCount:count 	9996
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[63].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[63].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[63].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[64].app 	pkCount:count 	10009
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[64].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[64].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[64].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[65].app 	pkCount:count 	10014
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[65].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[65].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[65].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[66].app 	pkCount:count 	10052
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[66].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[66].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[66].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[67].app 	pkCount:count 	9995
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[67].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[67].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[67].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[68].app 	pkCount:count 	9995
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[68].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[68].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[68].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.host[69].app 	pkCount:count 	10002
-attr interpolationmode  node
-attr source  pkCount
-attr title  "NumOfPks, count"
-scalar DaraTest.host[69].mac 	schedulingTime:mean 	nan
-attr source  schedulingTime
-attr title  "Scheduling time, mean"
-scalar DaraTest.host[69].mac 	discardPkCount:count 	0
-attr interpolationmode  node
-attr source  discardPkCount
-attr title  "Count of Discarded packets, count"
-scalar DaraTest.host[69].mac 	sentPkCount:count 	0
-attr interpolationmode  node
-attr source  sentPkCount
-attr title  "Count of sent packets, count"
-scalar DaraTest.ap.mac 	pkCount:count 	556588
+scalar DaraTest.ap.mac 	pkCount:count 	253761
 attr interpolationmode  node
 attr source  pkCount
 attr title  "pkCount, count"

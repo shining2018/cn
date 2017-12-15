@@ -28,6 +28,8 @@ module Ap
         string mobilityType = default("StationaryMobility");
         //mac
         string macType = default("");
+        
+        @networkNode();
 
     gates:
         input in @directIn;

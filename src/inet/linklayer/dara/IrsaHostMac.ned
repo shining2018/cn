@@ -21,5 +21,6 @@ simple IrsaHostMac extends HostMacBase
 	parameters:
 	    @display("i=block/ifcard");
 	    int ackSlotNum;
+	    int repetitionRate;
 	    @class(IrsaHostMac);
 }

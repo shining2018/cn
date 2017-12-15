@@ -24,7 +24,7 @@ IrsaHostMac::~IrsaHostMac()
 void IrsaHostMac::initialize()
 {
     HostMacBase::initialize();
-
+    m_RepetitionRate=par("repetitionRate");
     m_AckSlotNum=par("ackSlotNum");
 
     m_SelfMsgTimer=new cMessage("SelfMsg-Timer");
@@ -62,7 +62,13 @@ void IrsaHostMac::handleSelfMsg(cMessage *msg)
         if(msg->getKind()==PkKinds_Self_Dara_Host_Data)
         {
             msg->setKind(PkKinds_Host_Request);
-            sendDirect(msg,getPropagationSlots()*m_SlotLength,0,m_Ap->gate("in"));
+            //´íÎóÂÊ´¦Àí
+            m_pkErrorRate=dblrand();
+            if(m_pkErrorRate>getPkErrorRate())
+            {
+                sendDirect(msg,getPropagationSlots()*m_SlotLength,0,m_Ap->gate("in"));
+            }
+
         }
         else
         {
@@ -108,25 +114,51 @@ void IrsaHostMac::handleNonSelfMsg(cMessage *msg)
 
 int IrsaHostMac::getRepetitionNum()
 {
-    //0.5631x3+0.0436x3+0.3933x5
     int repetitionNum=0;
     double rd=dblrand();
-    if(rd<0.5631)
+
+    switch(m_RepetitionRate)
     {
-        repetitionNum=2;
-    }
-    else
+    case 1:
     {
-        if(rd<0.6067)
+        //0.5102x2+0.4898x4
+        if(rd<0.5102)
         {
-            repetitionNum=3;
+            repetitionNum=2;
         }
         else
         {
-            repetitionNum=5;
+            repetitionNum=4;
         }
+        break;
+    }
+    case 2:
+    {
+         //0.5631x3+0.0436x3+0.3933x5
+        if(rd<0.5631)
+        {
+            repetitionNum=2;
+        }
+        else
+        {
+            if(rd<0.6067)
+            {
+                repetitionNum=3;
+            }
+            else
+            {
+                repetitionNum=5;
+            }
+        }
+        break;
+    }
+    default:
+    {
+        cRuntimeError("Irsa-Error Repetition Rate Distribution.");
+    }
     }
     return repetitionNum;
+
 }
 
 void IrsaHostMac::sendData()
@@ -200,6 +232,8 @@ void IrsaHostMac::sendData()
         slotIndexVector.clear();
     }
 }
+
+
 }
 
 

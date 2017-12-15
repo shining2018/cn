@@ -135,7 +135,7 @@ bool HostMacBase::isOutOfCommunicationRange()
 }
 
 //TODO:need to modify
-double getPkErrorRate()
+double HostMacBase::getPkErrorRate()
 {
     return 0.001;
 }

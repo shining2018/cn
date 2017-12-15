@@ -20,7 +20,10 @@ class IrsaHostMac : public HostMacBase
 {
 private:
     int m_AckSlotNum;
+    int m_RepetitionRate;
     cMessage *m_SelfMsgTimer;
+
+
 
 protected:
     void initialize() override;
@@ -29,6 +32,7 @@ protected:
     void handleNonSelfMsg(cMessage *msg);
     int getRepetitionNum();
     void sendData();
+
 
 public:
     IrsaHostMac();

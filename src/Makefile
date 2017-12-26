@@ -73,6 +73,8 @@ OBJS = \
     $O/inet/linklayer/dara/DaraApMac.o \
     $O/inet/linklayer/dara/DaraHostMac.o \
     $O/inet/linklayer/dara/IrsaHostMac.o \
+    $O/inet/linklayer/tdma/TdmaApMac.o \
+    $O/inet/linklayer/tdma/TdmaHostMac.o \
     $O/inet/mobility/base/MobilityBase.o \
     $O/inet/mobility/base/MovingMobilityBase.o \
     $O/inet/mobility/contract/IMobility.o \
@@ -85,12 +87,16 @@ OBJS = \
     $O/inet/visualizer/networknode/NetworkNodeCanvasVisualization.o \
     $O/inet/visualizer/networknode/NetworkNodeCanvasVisualizer.o \
     $O/inet/linklayer/dara/DaraApPk_m.o \
-    $O/inet/linklayer/dara/DaraHostPk_m.o
+    $O/inet/linklayer/dara/DaraHostPk_m.o \
+    $O/inet/linklayer/tdma/TdmaACK_m.o \
+    $O/inet/linklayer/tdma/TdmaReq_m.o
 
 # Message files
 MSGFILES = \
     inet/linklayer/dara/DaraApPk.msg \
-    inet/linklayer/dara/DaraHostPk.msg
+    inet/linklayer/dara/DaraHostPk.msg \
+    inet/linklayer/tdma/TdmaACK.msg \
+    inet/linklayer/tdma/TdmaReq.msg
 
 # SM files
 SMFILES =
@@ -346,6 +352,42 @@ $O/inet/linklayer/dara/IrsaHostMac.o: inet/linklayer/dara/IrsaHostMac.cc \
 	inet/linklayer/dara/DaraHostPk_m.h \
 	inet/linklayer/dara/IrsaHostMac.h \
 	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/tdma/TdmaACK_m.o: inet/linklayer/tdma/TdmaACK_m.cc \
+	inet/linklayer/tdma/TdmaACK_m.h
+$O/inet/linklayer/tdma/TdmaApMac.o: inet/linklayer/tdma/TdmaApMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/features.h \
+	inet/linklayer/common/ApMacBase.h \
+	inet/linklayer/tdma/TdmaACK_m.h \
+	inet/linklayer/tdma/TdmaApMac.h \
+	inet/linklayer/tdma/TdmaReq_m.h
+$O/inet/linklayer/tdma/TdmaHostMac.o: inet/linklayer/tdma/TdmaHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/tdma/TdmaACK_m.h \
+	inet/linklayer/tdma/TdmaHostMac.h \
+	inet/linklayer/tdma/TdmaReq_m.h \
+	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/tdma/TdmaReq_m.o: inet/linklayer/tdma/TdmaReq_m.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/geometry/common/Coord.h \
+	inet/features.h \
+	inet/linklayer/tdma/TdmaReq_m.h
 $O/inet/mobility/base/MobilityBase.o: inet/mobility/base/MobilityBase.cc \
 	inet/common/Compat.h \
 	inet/common/INETDefs.h \

@@ -18,13 +18,15 @@ PkKinds_Host_Request=101,
 
 PkKinds_Host_Data =102,
 
-PkKinds_Ap_ACK=103,
+PkKinds_Host_Error_Data=103,
 
-PkKinds_Self_IRSA_Host_Data=104,
+PkKinds_Ap_ACK=104,
 
-PkKinds_Host_Statistic=105,
+PkKinds_Self_IRSA_Host_Data=105,
 
-PkKinds_Self_Dara_Host_Data=106,
+PkKinds_Host_Statistic=106,
+
+PkKinds_Self_Dara_Host_Data=107,
 
 };
 }

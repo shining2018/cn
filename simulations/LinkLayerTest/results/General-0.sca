@@ -1,0 +1,206 @@
+version 2
+run General-0-20171226-19:44:25-10860
+attr configname General
+attr datetime 20171226-19:44:25
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network LinkLayerTest
+attr processid 10860
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.ap.mac.communicationRange 300000m
+param **.ap.mac.reqSlotNum 30
+param **.ap.mac.slotLength 0.1ms
+param **.ap.mac.slotNum 1000
+param **.ap.macType "\"TdmaApMac\""
+param **.ap.mobility.initFromDisplayString false
+param **.ap.mobility.initialX 300000m
+param **.ap.mobility.initialY 300000m
+param **.ap.mobility.initialZ 0m
+param **.ap.mobilityType "\"StationaryMobility\""
+param **.constraintAreaMaxX 600000m
+param **.constraintAreaMaxY 600000m
+param **.constraintAreaMaxZ 0m
+param **.constraintAreaMinX 0
+param **.constraintAreaMinY 0
+param **.constraintAreaMinZ 0
+param **.hostNum 10
+param **.host[*].app.burstInterval uniform(20ms,40ms)
+param **.host[*].app.pkLength 4096b
+param **.host[*].app.pksPerBurst 1
+param **.host[*].appType "\"BurstTraffic\""
+param **.host[*].mac.communicationRange 300000m
+param **.host[*].mac.reqSlotNum 30
+param **.host[*].mac.slotLength 0.1ms
+param **.host[*].mac.slotNum 1000
+param **.host[*].mac.txRate 100000000bps
+param **.host[*].macType "\"TdmaHostMac\""
+param **.host[*].mobility.duration 120s
+param **.host[*].mobility.margin 30000m
+param **.host[*].mobility.r 100000m
+param **.host[*].mobility.radius 10000m
+param **.host[*].mobility.speed 80mps
+param **.host[*].mobility.startAngle "uniform(0deg, 360deg)"
+param **.host[*].mobilityType "\"ThreeWayRandomMobility\""
+
+scalar LinkLayerTest.host[0].app 	pkCount:count 	239916
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[0].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[0].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[0].mac 	sentPkCount:count 	239914
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[1].app 	pkCount:count 	239887
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[1].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[1].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[1].mac 	sentPkCount:count 	210917
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[2].app 	pkCount:count 	239908
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[2].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[2].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[2].mac 	sentPkCount:count 	123335
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[3].app 	pkCount:count 	239758
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[3].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[3].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[3].mac 	sentPkCount:count 	239757
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[4].app 	pkCount:count 	239931
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[4].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[4].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[4].mac 	sentPkCount:count 	239928
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[5].app 	pkCount:count 	240148
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[5].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[5].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[5].mac 	sentPkCount:count 	175708
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[6].app 	pkCount:count 	239972
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[6].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[6].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[6].mac 	sentPkCount:count 	89431
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[7].app 	pkCount:count 	239927
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[7].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[7].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[7].mac 	sentPkCount:count 	239924
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[8].app 	pkCount:count 	240055
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[8].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[8].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[8].mac 	sentPkCount:count 	240054
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.host[9].app 	pkCount:count 	239979
+attr interpolationmode  node
+attr source  pkCount
+attr title  "NumOfPks, count"
+scalar LinkLayerTest.host[9].mac 	schedulingTime:mean 	nan
+attr source  schedulingTime
+attr title  "Scheduling time, mean"
+scalar LinkLayerTest.host[9].mac 	discardPkCount:count 	0
+attr interpolationmode  node
+attr source  discardPkCount
+attr title  "Count of Discarded packets, count"
+scalar LinkLayerTest.host[9].mac 	sentPkCount:count 	239978
+attr interpolationmode  node
+attr source  sentPkCount
+attr title  "Count of sent packets, count"
+scalar LinkLayerTest.ap.mac 	pkPerSecond 	283.18694444444
+scalar LinkLayerTest.ap.mac 	pkCount:count 	2038946
+attr interpolationmode  node
+attr source  pkCount
+attr title  "pkCount, count"

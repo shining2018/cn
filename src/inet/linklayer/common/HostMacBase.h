@@ -33,6 +33,7 @@ protected:
 
     //AppQueue
     cQueue m_AppQueue;
+    cQueue m_AppQueueError;
 
     //statistic
     simsignal_t m_SentPkCountSignal;

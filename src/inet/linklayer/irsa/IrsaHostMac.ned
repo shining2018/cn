@@ -13,14 +13,13 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package cn.inet.linklayer.dara;
+package cn.inet.linklayer.irsa;
 import cn.inet.linklayer.common.HostMacBase;
 
 simple IrsaHostMac extends HostMacBase
 {
 	parameters:
-	    @display("i=block/ifcard");
-	    int ackSlotNum;
-	    int repetitionRate;
+	    
 	    @class(IrsaHostMac);
+	
 }

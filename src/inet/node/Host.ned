@@ -20,35 +20,29 @@ import cn.inet.linklayer.contract.IHostMac;
 
 module Host
 {
-	parameters:
-	    @display("i=device/satellite");
-	    
-	    //mobility module
-	    string mobilityType=default("StationaryMobility");
-	    //application layer
-	    string appType=default("BurstTraffic");
-	    //mac layer
-	    string macType=default("TdmaHostMac");
-	    
-	    @networkNode();
-	
-	gates:
-	    input in @directIn;
-	        
-	submodules:
-	    mobility:<mobilityType> like IMobility
-	    {
-	    	
-	    }
-	    app:<appType> like IApp
-	    {
-	    
-	    }
-	    mac:<macType> like IHostMac
-	    {
-	    
-	    }
-	connections:
-	    in --> mac.inFromHost;
-	    app.out --> mac.inFromApp;
+    parameters:
+        @display("i=device/satellite");
+
+        //mobility module
+        string mobilityType = default("StationaryMobility");
+        //application layer
+        string appType = default("BurstTraffic");
+        //mac layer
+        string macType = default("TdmaHostMac");
+
+        @networkNode();
+
+    gates:
+        input in @directIn;
+
+    submodules:
+        mobility: <mobilityType> like IMobility;
+        app: <appType> like IApp;
+        mac: <macType> like IHostMac {
+
+            @display("p=117,111");
+        }
+    connections:
+        in --> mac.inFromHost;
+        app.out --> mac.inFromApp;
 }

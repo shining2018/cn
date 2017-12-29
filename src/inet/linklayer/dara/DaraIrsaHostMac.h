@@ -1,12 +1,12 @@
 /*
- * IrsaHostMac.h
+ * DaraIrsaHostMac.h
  *
- *  Created on: 2017年12月14日
+ *  Created on: 2017年12月27日
  *      Author: NETLAB
  */
 
-#ifndef INET_LINKLAYER_DARA_IRSAHOSTMAC_H_
-#define INET_LINKLAYER_DARA_IRSAHOSTMAC_H_
+#ifndef INET_LINKLAYER_DARA_DARAIRSAHOSTMAC_H_
+#define INET_LINKLAYER_DARA_DARAIRSAHOSTMAC_H_
 
 #include "inet/linklayer/common/HostMacBase.h"
 #include "inet/linklayer/dara/DaraHostPk_m.h"
@@ -16,7 +16,7 @@ using namespace std;
 
 namespace inet
 {
-class IrsaHostMac : public HostMacBase
+class DaraIrsaHostMac : public HostMacBase
 {
 private:
     int m_AckSlotNum;
@@ -35,11 +35,11 @@ protected:
 
 
 public:
-    IrsaHostMac();
-    ~IrsaHostMac();
+    DaraIrsaHostMac();
+    ~DaraIrsaHostMac();
 };
 }
 
 
 
-#endif /* INET_LINKLAYER_DARA_IRSAHOSTMAC_H_ */
+#endif /* INET_LINKLAYER_DARA_DARAIRSAHOSTMAC_H_ */

@@ -72,7 +72,11 @@ OBJS = \
     $O/inet/linklayer/common/HostMacBase.o \
     $O/inet/linklayer/dara/DaraApMac.o \
     $O/inet/linklayer/dara/DaraHostMac.o \
-    $O/inet/linklayer/dara/IrsaHostMac.o \
+    $O/inet/linklayer/dara/DaraIrsaHostMac.o \
+    $O/inet/linklayer/irsa/IrsaApMac.o \
+    $O/inet/linklayer/irsa/IrsaHostMac.o \
+    $O/inet/linklayer/ld/LdApMac.o \
+    $O/inet/linklayer/ld/LdHostMac.o \
     $O/inet/linklayer/tdma/TdmaApMac.o \
     $O/inet/linklayer/tdma/TdmaHostMac.o \
     $O/inet/mobility/base/MobilityBase.o \
@@ -88,6 +92,9 @@ OBJS = \
     $O/inet/visualizer/networknode/NetworkNodeCanvasVisualizer.o \
     $O/inet/linklayer/dara/DaraApPk_m.o \
     $O/inet/linklayer/dara/DaraHostPk_m.o \
+    $O/inet/linklayer/irsa/IrsaHostPk_m.o \
+    $O/inet/linklayer/ld/LdACK_m.o \
+    $O/inet/linklayer/ld/LdReq_m.o \
     $O/inet/linklayer/tdma/TdmaACK_m.o \
     $O/inet/linklayer/tdma/TdmaReq_m.o
 
@@ -95,6 +102,9 @@ OBJS = \
 MSGFILES = \
     inet/linklayer/dara/DaraApPk.msg \
     inet/linklayer/dara/DaraHostPk.msg \
+    inet/linklayer/irsa/IrsaHostPk.msg \
+    inet/linklayer/ld/LdACK.msg \
+    inet/linklayer/ld/LdReq.msg \
     inet/linklayer/tdma/TdmaACK.msg \
     inet/linklayer/tdma/TdmaReq.msg
 
@@ -338,7 +348,7 @@ $O/inet/linklayer/dara/DaraHostMac.o: inet/linklayer/dara/DaraHostMac.cc \
 	inet/mobility/contract/IMobility.h
 $O/inet/linklayer/dara/DaraHostPk_m.o: inet/linklayer/dara/DaraHostPk_m.cc \
 	inet/linklayer/dara/DaraHostPk_m.h
-$O/inet/linklayer/dara/IrsaHostMac.o: inet/linklayer/dara/IrsaHostMac.cc \
+$O/inet/linklayer/dara/DaraIrsaHostMac.o: inet/linklayer/dara/DaraIrsaHostMac.cc \
 	inet/common/Compat.h \
 	inet/common/INETDefs.h \
 	inet/common/INETMath.h \
@@ -350,8 +360,68 @@ $O/inet/linklayer/dara/IrsaHostMac.o: inet/linklayer/dara/IrsaHostMac.cc \
 	inet/linklayer/common/HostMacBase.h \
 	inet/linklayer/dara/DaraApPk_m.h \
 	inet/linklayer/dara/DaraHostPk_m.h \
-	inet/linklayer/dara/IrsaHostMac.h \
+	inet/linklayer/dara/DaraIrsaHostMac.h \
 	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/irsa/IrsaApMac.o: inet/linklayer/irsa/IrsaApMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/features.h \
+	inet/linklayer/common/ApMacBase.h \
+	inet/linklayer/irsa/IrsaApMac.h \
+	inet/linklayer/irsa/IrsaHostPk_m.h
+$O/inet/linklayer/irsa/IrsaHostMac.o: inet/linklayer/irsa/IrsaHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/irsa/IrsaHostMac.h \
+	inet/linklayer/irsa/IrsaHostPk_m.h \
+	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/irsa/IrsaHostPk_m.o: inet/linklayer/irsa/IrsaHostPk_m.cc \
+	inet/linklayer/irsa/IrsaHostPk_m.h
+$O/inet/linklayer/ld/LdACK_m.o: inet/linklayer/ld/LdACK_m.cc \
+	inet/linklayer/ld/LdACK_m.h
+$O/inet/linklayer/ld/LdApMac.o: inet/linklayer/ld/LdApMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/features.h \
+	inet/linklayer/common/ApMacBase.h \
+	inet/linklayer/ld/LdACK_m.h \
+	inet/linklayer/ld/LdApMac.h \
+	inet/linklayer/ld/LdReq_m.h
+$O/inet/linklayer/ld/LdHostMac.o: inet/linklayer/ld/LdHostMac.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/PkKinds.h \
+	inet/common/geometry/common/Coord.h \
+	inet/common/geometry/common/EulerAngles.h \
+	inet/features.h \
+	inet/linklayer/common/HostMacBase.h \
+	inet/linklayer/ld/LdACK_m.h \
+	inet/linklayer/ld/LdHostMac.h \
+	inet/linklayer/ld/LdReq_m.h \
+	inet/mobility/contract/IMobility.h
+$O/inet/linklayer/ld/LdReq_m.o: inet/linklayer/ld/LdReq_m.cc \
+	inet/common/Compat.h \
+	inet/common/INETDefs.h \
+	inet/common/INETMath.h \
+	inet/common/InitStages.h \
+	inet/common/geometry/common/Coord.h \
+	inet/features.h \
+	inet/linklayer/ld/LdReq_m.h
 $O/inet/linklayer/tdma/TdmaACK_m.o: inet/linklayer/tdma/TdmaACK_m.cc \
 	inet/linklayer/tdma/TdmaACK_m.h
 $O/inet/linklayer/tdma/TdmaApMac.o: inet/linklayer/tdma/TdmaApMac.cc \

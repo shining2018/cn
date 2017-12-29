@@ -1,27 +1,28 @@
 /*
- * IrsaHostMac.cc
+ * DaraIrsaHostMac.cc
  *
- *  Created on: 2017年12月14日
+ *  Created on: 2017年12月27日
  *      Author: NETLAB
  */
-#include "inet/linklayer/dara/IrsaHostMac.h"
+
+#include "inet/linklayer/dara/DaraIrsaHostMac.h"
 #include "inet/linklayer/dara/DaraApPk_m.h"
 
 namespace inet
 {
-Define_Module(IrsaHostMac);
+Define_Module(DaraIrsaHostMac);
 
-IrsaHostMac::IrsaHostMac()
+DaraIrsaHostMac::DaraIrsaHostMac()
 {
     m_SelfMsgTimer=nullptr;
 }
 
-IrsaHostMac::~IrsaHostMac()
+DaraIrsaHostMac::~DaraIrsaHostMac()
 {
     cancelAndDelete(m_SelfMsgTimer);
 }
 
-void IrsaHostMac::initialize()
+void DaraIrsaHostMac::initialize()
 {
     HostMacBase::initialize();
     m_RepetitionRate=par("repetitionRate");
@@ -31,7 +32,7 @@ void IrsaHostMac::initialize()
     scheduleAt(0,m_SelfMsgTimer);
 }
 
-void IrsaHostMac::handleMessage(cMessage *msg)
+void DaraIrsaHostMac::handleMessage(cMessage *msg)
 {
     if(msg->isSelfMessage())
     {
@@ -43,7 +44,7 @@ void IrsaHostMac::handleMessage(cMessage *msg)
     }
 }
 
-void IrsaHostMac::handleSelfMsg(cMessage *msg)
+void DaraIrsaHostMac::handleSelfMsg(cMessage *msg)
 {
     if(msg==m_SelfMsgTimer)
     {
@@ -77,7 +78,7 @@ void IrsaHostMac::handleSelfMsg(cMessage *msg)
     }
 }
 
-void IrsaHostMac::handleNonSelfMsg(cMessage *msg)
+void DaraIrsaHostMac::handleNonSelfMsg(cMessage *msg)
 {
     if(msg->getKind()==PkKinds_AppPk)
     {
@@ -112,7 +113,7 @@ void IrsaHostMac::handleNonSelfMsg(cMessage *msg)
     }
 }
 
-int IrsaHostMac::getRepetitionNum()
+int DaraIrsaHostMac::getRepetitionNum()
 {
     int repetitionNum=0;
     double rd=dblrand();
@@ -161,7 +162,7 @@ int IrsaHostMac::getRepetitionNum()
 
 }
 
-void IrsaHostMac::sendData()
+void DaraIrsaHostMac::sendData()
 {
     if(m_AppQueue.getLength()!=0)
     {

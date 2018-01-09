@@ -24,6 +24,8 @@ DaraApMac::~DaraApMac()
 void DaraApMac::initialize()
 {
     ApMacBase::initialize();
+    m_PkTotalCountSignal = registerSignal("pkTotalCount");
+    m_PkRecoveryCountSignal=registerSignal("pkRecoveryCount");
     m_AckSlotNum=par("ackSlotNum");
     m_SelfMsgHandleReq=new cMessage("SelfMsg-HandleHostReq");
     scheduleAt(0+m_SlotLength*(m_SlotNum-m_AckSlotNum),m_SelfMsgHandleReq);
@@ -148,7 +150,9 @@ void DaraApMac::handleHostData()
     EV_DEBUG<<endl;
 
     m_TotalReceivedPk+=PkIdSet.size();
+    emit(m_PkTotalCountSignal,(long)(PkIdSet.size()));
     m_RecoveriedPk+=CleanPksInfoVector.size();
+    emit(m_PkRecoveryCountSignal,(long)(CleanPksInfoVector.size()));
     HostPksInfoVector.clear();
 }
 
@@ -174,6 +178,8 @@ void DaraApMac::finish()
 {
     EV_DEBUG<<"Total received pk: "<<m_TotalReceivedPk<<endl;
     EV_DEBUG<<"Recoveried pk: "<<m_RecoveriedPk<<endl;
+    double sdr=((double)m_RecoveriedPk/m_TotalReceivedPk);
+    EV_DEBUG<<"SDR:"<<sdr<<endl;
 
 }
 }

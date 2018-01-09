@@ -40,6 +40,10 @@ private:
     long m_RecoveriedPk=0;
     cMessage *m_SelfMsgHandleReq;
 
+    simsignal_t m_PkTotalCountSignal;
+    simsignal_t m_PkRecoveryCountSignal;
+
+
 protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;

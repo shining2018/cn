@@ -22,5 +22,10 @@ simple DaraApMac extends ApMacBase
 	parameters:
 	    @display("i=block/ifcard");
 	    int ackSlotNum;
+	    
+	    @signal[pkTotalCount](type=long);
+	    @statistic[pkTotalCount](title="pkTotalCount";source=pkTotalCount;record=count;interpolationmode=node);
+	    @signal[pkRecoveryCount](type=long);
+	    @statistic[pkRecoveryCount](title="pkRecoveryCount";source=pkRecoveryCount;record=count;interpolationmode=node);
 	    @class(DaraApMac);
 }

@@ -21,7 +21,7 @@ import cn.inet.linklayer.contract.IHostMac;
 module Host
 {
     parameters:
-        @display("i=device/satellite");
+        @display("i=device/uav_s");
 
         //mobility module
         string mobilityType = default("StationaryMobility");

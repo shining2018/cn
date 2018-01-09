@@ -137,7 +137,7 @@ bool HostMacBase::isOutOfCommunicationRange()
 //TODO:need to modify
 double HostMacBase::getPkErrorRate()
 {
-    return 0.001;
+    return 0.05;
 }
 
 bool HostMacBase::isAppQueueFull()

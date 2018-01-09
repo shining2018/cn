@@ -38,10 +38,12 @@ private:
 
     long m_TotalReceivedPk=0;
     long m_RecoveriedPk=0;
+    double m_Sdr=0;
     cMessage *m_SelfMsgHandleReq;
 
     simsignal_t m_PkTotalCountSignal;
     simsignal_t m_PkRecoveryCountSignal;
+    simsignal_t m_SdrSignal;
 
 
 protected:

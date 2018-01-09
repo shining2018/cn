@@ -70,9 +70,15 @@ void DaraHostMac::handleSelfMsg(cMessage *msg)
         {
             msg->setKind(PkKinds_Host_Request);
             m_pkErrorRate=dblrand();
+            EV_DEBUG<<"Packet error probability: "<<m_pkErrorRate<<endl;
             if(m_pkErrorRate>getPkErrorRate())
             {
                 sendDirect(msg,getPropagationSlots()*m_SlotLength,0,m_Ap->gate("in"));
+                EV_DEBUG<<m_Parent->getFullName()<<" successfully send a repetition."<<endl;
+            }
+            else
+            {
+                EV_DEBUG<<m_Parent->getFullName()<<" failed to send a repetition."<<endl;
             }
         }
         else
@@ -179,6 +185,7 @@ void DaraHostMac::sendData()
 
         //得到 需要发多少个副本
         int repetitionNum=getRepetitionNum();
+        EV_DEBUG<<m_Parent->getFullName()<<" will generate "<<repetitionNum<<" repetitions."<<endl;
 
         //以下过程得到时隙索引（即副本在哪些时隙到达基站）
         //并将这些索引保存在slotIndexVector中
@@ -188,18 +195,19 @@ void DaraHostMac::sendData()
 
         //DARA中，根据传播延迟，可以确定某一个时隙，其他时隙随机
         int certainSlot=getPropagationSlots();
+        EV_DEBUG<<"Its propagation slot is "<<certainSlot<<endl;
         AvaiableSlots[certainSlot-1]=false;
-        slotIndexVector.push_back(certainSlot-1);
+        slotIndexVector.push_back(certainSlot);
 
         for(int i=0;i<repetitionNum-1;i++)
         {
             rdSlotIndex=intrand(m_SlotsNum-m_AckSlotNum);
             while(!AvaiableSlots[rdSlotIndex])
             {
-                rdSlotIndex=intrand(m_SlotsNum);
+                rdSlotIndex=intrand(m_SlotsNum-m_AckSlotNum);
             }
             AvaiableSlots[rdSlotIndex]=false;
-            slotIndexVector.push_back(rdSlotIndex);
+            slotIndexVector.push_back(rdSlotIndex+1);
         }
         EV_DEBUG<<"These slot indexs are choosen:";
         for(int i=0;i<slotIndexVector.size();i++)

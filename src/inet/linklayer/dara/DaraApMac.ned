@@ -27,5 +27,7 @@ simple DaraApMac extends ApMacBase
 	    @statistic[pkTotalCount](title="pkTotalCount";source=pkTotalCount;record=count;interpolationmode=node);
 	    @signal[pkRecoveryCount](type=long);
 	    @statistic[pkRecoveryCount](title="pkRecoveryCount";source=pkRecoveryCount;record=count;interpolationmode=node);
+	    @signal[sdr](type=double);
+	    @statistic[sdr](title="sdr";source=sdr;record=last;interpolationmode=node);
 	    @class(DaraApMac);
 }

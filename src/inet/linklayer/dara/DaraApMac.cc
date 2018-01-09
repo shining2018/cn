@@ -26,6 +26,7 @@ void DaraApMac::initialize()
     ApMacBase::initialize();
     m_PkTotalCountSignal = registerSignal("pkTotalCount");
     m_PkRecoveryCountSignal=registerSignal("pkRecoveryCount");
+    m_SdrSignal=registerSignal("sdr");
     m_AckSlotNum=par("ackSlotNum");
     m_SelfMsgHandleReq=new cMessage("SelfMsg-HandleHostReq");
     scheduleAt(0+m_SlotLength*(m_SlotNum-m_AckSlotNum),m_SelfMsgHandleReq);
@@ -57,6 +58,21 @@ void DaraApMac::handleNonSelfMsg(cMessage *msg)
         DaraHostPkInfo pkInfor={pk->getPkId(),pk->getSlotIndex(),false};
 
         PkIdSet.insert(pk->getPkId());
+        EV_DEBUG<<"Packet id set: ";
+        if(!PkIdSet.empty())
+        {
+            for(set<int>::iterator it=PkIdSet.begin();it!=PkIdSet.end();it++)
+            {
+                EV_DEBUG<<*it<<" ";
+            }
+            EV_DEBUG<<endl;
+        }
+        else
+        {
+            EV_DEBUG<<"empty!"<<endl;
+        }
+
+
         //HostIdSet.insert(pk->getHostId());
         HostPathSet.insert(pk->getHostPath());
 
@@ -117,6 +133,10 @@ bool DaraApMac::isPkCleanInThisSlot(int slotId,int pkId)
 
 void DaraApMac::handleHostData()
 {
+    if(HostPksInfoVector.empty())
+    {
+        EV_DEBUG<<"HostPacketInfoVector is empty."<<endl;
+    }
     CleanPksInfoVector.clear();
     int newCleanPk=-1;
     vector<DaraHostPkInfo>::iterator ite;
@@ -144,15 +164,25 @@ void DaraApMac::handleHostData()
     for(int i=0;i<CleanPksInfoVector.size();i++)
     {
         EV_DEBUG<<CleanPksInfoVector[i].pkId<<" ";
-        emit(m_PkCountSignal,1l);
+        //emit(m_PkRecoveryCountSignal,1l);
         m_pkCount++;
     }
     EV_DEBUG<<endl;
 
     m_TotalReceivedPk+=PkIdSet.size();
-    emit(m_PkTotalCountSignal,(long)(PkIdSet.size()));
+    for(int i=0;i<PkIdSet.size();i++)
+    {
+        emit(m_PkTotalCountSignal,1l);
+    }
+    //emit(m_PkTotalCountSignal,(long)(PkIdSet.size()));
     m_RecoveriedPk+=CleanPksInfoVector.size();
-    emit(m_PkRecoveryCountSignal,(long)(CleanPksInfoVector.size()));
+    for(int i=0;i<CleanPksInfoVector.size();i++)
+    {
+        emit(m_PkRecoveryCountSignal,1l);
+    }
+    //emit(m_PkRecoveryCountSignal,(long)(CleanPksInfoVector.size()));
+    m_Sdr=(double)(m_RecoveriedPk)/m_TotalReceivedPk;
+    emit(m_SdrSignal,m_Sdr);
     HostPksInfoVector.clear();
 }
 
@@ -172,6 +202,8 @@ void DaraApMac::sendAck()
         sendDirect(dup,0,0,getModuleByPath((*ite).c_str())->gate("in"));
     }
     delete pk;
+    PkIdSet.clear();
+    HostPathSet.clear();
 }
 
 void DaraApMac::finish()
